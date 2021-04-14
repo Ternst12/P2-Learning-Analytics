@@ -158,7 +158,7 @@ app.post("/erfaring", (req, res) => {
     }
 } )
 
-app.listen(3011);
+app.listen(3007);
 
 /*
 app.listen(3011,()=> {
