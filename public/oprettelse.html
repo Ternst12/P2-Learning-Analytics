@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title> Opret din Case </title>
+    <style>
+            /* Almen */
+        
+
+        body  {  
+                font-weight: 600;
+                background: linear-gradient(to right, blue, white);
+            }
+            ul {
+                list-style: none;
+            }
+
+            /* struktur */
+
+        .bodycontainer {
+            font-family: "Source Sans Pro", sans-serif;
+            width: 700px;
+            margin: auto;
+            position: relative;
+            top: 100px;
+            
+        }
+
+           /* Special */
+        .baggrund{
+            position: relative;
+            z-index: 1;
+            top: 100px;
+            margin: 0px;
+           
+            width: 100px;
+            margin: auto;
+        }
+        
+        .tile {
+            background-color: rgb(142, 143, 140);
+            margin: 20px;
+            padding: 0px;
+            border-radius: 10px;
+            border: 2px solid darkblue;
+
+        }
+        h3 {
+            padding-bottom: 5px;
+            text-align: center;
+            font-size: 24px;
+            color: black;
+        }
+        p {
+            text-align: center;
+        }
+
+        form {
+            margin-bottom: 10px;
+
+        }
+        input[type=text], input[type=submit]{
+            position: relative;
+            left: 16px;
+            font-size: 16px;
+            padding: 10px;
+            border: 2px solid darkblue;
+            border-radius: 5px;
+            margin: 5px 10px;
+            width: 600px;
+            box-sizing: border-box;
+        }
+        input[type=submit]{
+            background-color: gold;
+            color: rgb(10, 189, 85);
+            cursor: pointer;
+        }   
+        
+        #casedis {
+            border: 2px solid darkblue;
+            border-radius: 5px;
+        }
+        textarea {
+            position: relative;
+            left: 16px;
+            margin: 5px 10px;
+            font-family: "Times New Roman";
+            font-size: 18px;
+            color: dimgrey;
+        }
+        
+        input:focus {
+            border: 3px solid red;
+            background-color: lightcoral;
+        }
+        #køn {
+            position: relative;
+            left: 30px;
+            font-size: 16px;
+            padding: 60px;
+            border: 2px solid darkblue;
+            border-radius: 5px;
+            margin: 20px 10px;
+            box-sizing: border-box;
+        }
+        label {
+            position: relative;
+            left: 20px;
+        }
+
+    </style>
+      <!-- Links -->
+    <link rel="stylesheet" href="P2.css/navibar.css">
+    </head>
+    <body id="body">
+       
+        <!-- Navigations bar start-->
+
+        <div class="navbar">
+            <div class ="left">
+                <a href="forside.html"><img src="billeder/bfd3d14f8fc04b5484eb982e76e16bc0.png"
+                    id="logo"></a>
+            </div>
+            <div class="right">
+                <ul class="nav">
+                    <li> <a href="findcase.html" class="style"> Find en Case </a> </li>
+                    <li> <a href="oprettelse.html" class="style"> Opret Case </a> </li>
+                </ul>
+            </div>
+        <!-- Navigations bar slut -->
+
+        <!-- Forandring af baggrundsfarven-->
+        <div class="baggrund">
+            <input class="color1" type="color" name="color1" value="#0000ff">
+            <input class="color2" type="color" name="color2" value="#E5F7F8">
+        </div>
+        <script type="text/javascript" src="javascript/baggrund.js" ></script>
+
+        <div class="bodycontainer">
+        <div class="container">
+            <div class="tile" id="login">
+                <h3> Opret case </h3>
+                <p> Her kan du oprette din case. <br>
+                Du kan senere finde din case igen ved at trykke <a href="findcase.html" id="shortcut"> her </a> </p>
+                <form action="nycase" method="POST">
+                    <input type="text" placeholder="Indtast Navn på Case f.eks. &quot;farve-memory ...&quot;" name="CaseNavn">
+                    <input type="text" placeholder="Indtast søgeord f.eks. &quot;farver, memory, hukommelse ...&quot;" name="SearchWord">
+                    <textarea name="CaseDis" id="casedis" cols="64" rows="10"> Fortæl om din Case </textarea>
+                    <input id="køn" type="radio" name="køn" value="dreng"> <label for="dreng"> Dreng </label> 
+                    <input id="køn" type="radio" name="køn" value="pige"> <label for="pige"> Pige </label> 
+                    <input type="submit" value="Opret Case">
+                </form>
+            </div>
+        </div>
+        </div>
+        
+
+    </body>
+
+
+</html>

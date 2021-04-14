@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Forside </title>
+        <style>
+            /*** Almen ***/
+            * {
+                font-family:"Open Sans" ;
+                font-weight: 600;
+                margin: 0px;
+                padding: 0px;
+            }
+            ul {
+                list-style: none;
+            }
+
+            /*** Struktur ***/
+            .header {
+                height: 650px;
+                width: 100%;
+                background-image: url(billeder/robo-wunderkind-hLvQ4-QEBAE-unsplash.jpg);
+                background-size:cover;
+            }
+            
+
+            /*** Speziel ***/
+             /* Searchbar */
+
+            .search {  
+                width: 950px;
+                margin: auto;
+                padding-top: 240px;
+            }
+            #claim {
+                font-size: 40px;
+                color: whitesmoke;
+                letter-spacing: 2px;
+                text-shadow: 0px 0px 10px black;
+            }
+            .searchbar {
+                height: 75px;
+                background-color: white;
+                margin-top: 40px;
+                box-shadow:0px 0px 10px black; 
+            }
+            #searchicon {
+                margin-top: 18px;
+                margin-left: 15px;
+                margin-right: 15px;
+                width: 40px;
+                float:left
+                
+                
+
+            }
+            #search input[type=text] {
+                width: 750px;
+                font-size: 20px;
+                padding: 15px 0px;
+                margin-top: 12px;
+                border: none;
+
+            }
+            #search input[type=submit] {
+                width: 90px;
+                margin:12px;
+                height: 50px;
+                background-color: turquoise;
+                font-size: 22px;
+                color: white;
+                letter-spacing: 1px;
+                border-radius: 5px;
+                font-weight: 300;
+                float: right;
+                
+            }
+        </style>
+        <!-- Links -->
+            <!-- Navigations liste foroven -->
+        <link rel="stylesheet" href="P2.css/navibar.css">
+            <!-- Bevægede billeder i bunden -->           
+        <link rel="stylesheet" href="P2.css/slider.css">
+    </head>
+    <body>
+      <!-- Navigationsfelt i toppen start-->  
+        <div class="navbar">
+            <div class ="left">
+                <a href="forside.html"><img src="billeder/bfd3d14f8fc04b5484eb982e76e16bc0.png"
+                id="logo"></a>
+                
+            </div>
+            <div class="right">
+                <ul class="nav">
+                    <li> <a href="findcase.html" class="style"> Find en Case </a> </li>
+                    <li> <a href="oprettelse.html" class="style"> Opret Case </a> </li>
+                </ul>
+            </div>
+      </div>
+      <!-- Navigationsfelt i toppen slut-->
+        
+    
+
+      <!-- Søgefelt med baggrundsbillede start-->  
+        <div class="header">
+            <div class="search">
+                <p id="claim"> Her kan du søge efter en specifik case <br>
+                     ved at indtaste et søgeord </p>
+                <div class="searchbar">
+                    <img src="billeder/icons8-package-search-48.png"
+                    id="searchicon">
+                    <form id="search" method="GET">
+                        <input type="text"
+                        placeholder="Indtast f.eks. &quot;spisning&quot;" name="searchword">
+                        <input type="submit" value="Søg">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Søgefelt med baggrundsbillede slut-->
+
+        <!-- Billede gallary manuel og auto start-->
+        <div class="sliderbody">
+        <div class="slider">
+            <div class="slides">
+                <input type="radio" name="radio-btn" id="radio1">
+                <input type="radio" name="radio-btn" id="radio2">
+                <input type="radio" name="radio-btn" id="radio3">
+                <input type="radio" name="radio-btn" id="radio4">
+                <div class="slide first">
+                    <img src="billeder/robo-wunderkind-hLvQ4-QEBAE-unsplash.jpg" alt="">
+                </div>
+                <div class="slide">
+                    <img src="billeder/billede 2.jpg" alt="">
+                </div>
+                <div class="slide">
+                    <img src="billeder/billede 3.jpg" alt="">
+                </div>
+                <div class="slide">
+                    <img src="billeder/billede 4.jpg" alt="">
+                </div>
+                <div class="navigation-auto">
+                    <div class="auto-btn1"></div>
+                    <div class="auto-btn2"></div>
+                    <div class="auto-btn3"></div>
+                    <div class="auto-btn4"></div>
+                </div>
+            </div>
+            <div class="navigation-manual">
+                <label for="radio1" class="manual-btn" ></label>
+                <label for="radio2" class="manual-btn" ></label>
+                <label for="radio3" class="manual-btn" ></label>
+                <label for="radio4" class="manual-btn" ></label>
+            </div>
+        </div>
+        </div>
+        <!-- Billede gallary manuel og auto slut-->
+
+        <!-- Script til autoskift i gallary start-->
+        <script type="text/javascript">
+        var counter = 1;
+        setInterval(function(){
+            document.getElementById('radio'+ counter).checked = true;
+            counter++;
+            if(counter > 4){
+              counter = 1;  
+            }
+        }, 5000);
+        </script>
+        <!-- Script til autoskift i gallary start-->
+    </body>
+</html>
