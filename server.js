@@ -1,29 +1,42 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
-const mysql = require("mysql");
-
-
-// const morgan = require("morgan");
-// const dotenv = require("dotenv");
-// const apiRouter = require("./router/router");
-
-// dotenv.config();
-
-
+const connection = require("./database/db1"); // import af forbindelse til database
+const morgan = require("morgan");
+const router = require("./routes/http") // Import af routes
 
 app.use(express.json());
+app.use(morgan("short")); // Giver et bedre overblik over errors, samt behandlingstid, i terminalen
+app.use(bodyParser.urlencoded({extended: false})); // Middleware der hjælper med request og process data fra forms
+app.use(bodyParser.json()); // Middleware der hjælper med request og process data i json format 
 
-// app.use("/api/cases", apiRouter);
 
-// app.use(morgan("short"));
-app.use(bodyParser.urlencoded({extended: false}));
-app.use(bodyParser.json());
-app.use(express.static("public"));
-
-app.get("/", function(req, res) {
+app.use(express.static("public")); // henter alle statics files i public folder
+app.get("/", function(req, res) { // knytter forside.html til serverens forside 
     res.sendFile(__dirname + "/forside.html");
 });
+
+app.use(router); // "Kalder" mine imports
+
+
+connection.connect(function(err) { // Tjekker om der er forbindelse til databasaen
+        if (err)
+            {
+             return   console.error("Der er ingen forbindelse til database " + err.message);
+            }
+        console.log("Der er forbindelse til database");            
+    });
+
+app.listen(3007,()=> {
+    console.log("app is running on port 3007");
+    })
+
+
+
+
+
+/* Alt der er fanget i denne kommentar spalte kan ignoreres.
+Det er til evt. senere brug.
 
 const database = {
     cases: [
@@ -48,49 +61,8 @@ const database = {
             oprettet: new Date()
         }
     ]
-}
 
-const connection = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "password",
-    database: "cases"
-    });
 
-connection.connect(function(err) {
-        if (err)
-            {
-             return   console.error("Der er ingen forbindelse til database " + err.message);
-            }
-       
-        console.log("Der er forbindelse til database");
-            
-    });
-
- app.get("/case/:casenavn", (req, res) => {
-    console.log("Fetching Case med Casenavn " + req.params.casenavn)
-
-    connection.query("SELECT * FROM cases", (err, rows, fields) => {
-        console.log("fetched succes")
-        res.json(rows) })     
-      
-    });
-
-  
-
-    //res.end()
-
-app.post("/nycase", (req, res) => {
-    console.log("Du er ved at oprette en ny case");
-    var CaseNavn = req.body.CaseNavn;
-    var søgeord = req.body.SearchWord;
-    console.log("Casenavn er " + CaseNavn + " og søgeordet er " + søgeord);
-    res.end()
-});
-
-app.get("/", (req, res)=> {
-    res.send(database.cases);
-})
 
 app.post("/findcase", (req, res) => {
     if (req.body.navn === database.cases[0].navn &&
@@ -157,18 +129,4 @@ app.post("/erfaring", (req, res) => {
         res.status(404).json("ingen case matcher");
     }
 } )
-
-app.listen(3007);
-
-/*
-app.listen(3011,()=> {
-    console.log("app is running on port 3011");
-})
-
-
-/ --> res = Det viker
-/opret case --> GET = succes/fail
-/find Case --> POST = case
-/CASE/:CASEid --> GET = user
-/Update af antal Cases --> PUT - Case
 */
